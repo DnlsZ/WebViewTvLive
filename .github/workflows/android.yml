@@ -15,7 +15,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 只保留 JDK 设置
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -26,9 +25,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # 明确指定 app 模块
+    # 去掉了 clean
     - name: Build Debug APK
-      run: ./gradlew clean :app:assembleDebug
+      run: ./gradlew :app:assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
